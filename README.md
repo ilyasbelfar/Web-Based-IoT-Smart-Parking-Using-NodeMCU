@@ -27,3 +27,7 @@
 ![Imgur](Admin%20Dashboard%20ScreenShots/Capture_2.png)
 > Table Of All The Logs Of All Users With Date Filter.
 ![Imgur](Admin%20Dashboard%20ScreenShots/Capture_3.png)
+> Create New User.
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_4.png)
+> Stats & Reports Over Our IOT Web-Based Smart Parking.
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_5.png)
