@@ -1,7 +1,7 @@
 # Web-Based-IoT-Smart-Parking-Using-NodeMCU
  Web Based IoT Smart Parking Using NodeMCU
 
-#For Any Further Informations And To Fully Understand Our Project, You Can Read Our Project Report + User Guide.
+# For Any Further Informations And To Fully Understand Our Project, You Can Read Our Project Report + User Guide.
 
 # The Design Model Of Our IOT Web-Based Smart Parking
 <p align="center">
