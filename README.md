@@ -16,3 +16,14 @@
 ![Imgur](User%20Dashboard%20ScreenShots/profile.PNG)
 > Main Page Of User Dashboard.
 ![Imgur](User%20Dashboard%20ScreenShots/userDashnoard2.PNG)
+
+<br/>
+<br/>
+
+## Admin Dasbhoard
+> Admin Dashboard Main Page.
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_1.PNG)
+> Table Of All The Logs Of All Users.
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_2.PNG)
+> Table Of All The Logs Of All Users With Date Filter.
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_3.PNG)
