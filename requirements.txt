@@ -1,0 +1,10 @@
+Flask_Bcrypt==0.7.1
+mongoengine==0.24.1
+pymongo[srv]==3.12.3
+Werkzeug==2.0.0
+soupsieve~=2.3.2.post1
+flask_mail
+bcrypt~=3.2.2
+bs4
+Flask~=2.1.2
+requests~=2.27.1

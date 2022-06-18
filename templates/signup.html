@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Create New User{% endblock %}
+{% block navbar %}{% include 'navbar_admin.html' %}{% endblock %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="content container">
+        <header class="page-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </header>
+        <section class="page-content">
+            <div class="row">
+              <div class="col-lg">
+
+    <h1>User Creation</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form class="form-signin" action="/admin/signup" method="post">
+        <div class="form-group">
+            <label for="firstname">Firstname:</label>
+            <input type="name" class="form-control" name="firstname" id="firstname" placeholder="Firstname" required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname:</label>
+            <input type="name" class="form-control" name="lastname" id="lastname" placeholder="Lastname" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <label for="credit">Initial Credit:</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">DA</span>
+                </div>
+                <input type="number" class="form-control" name="credit" id="credit" placeholder="Initial Credit" aria-label="Amount (to the nearest dinar)" required>
+            </div>
+        </div>
+      <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label for="Tags">Choose a tag:</label>
+            <select name="Tags" class="form-control" id="Tags">
+                <option disabled selected></option>
+                {% for ut in utag %}
+                    <option value={{ut}}>{{ut}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+      <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" onclick = 'this.form.submit();' type="button">Signup</button>
+    </form>
+
+</div>
+</div>
+{% endblock %}

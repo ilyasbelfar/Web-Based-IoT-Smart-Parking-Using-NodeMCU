@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block navbar %}{% include 'navbar.html' %}{% endblock %}
+{% block content %}
+    <div class="content-wrapper" id="profile">
+        <div class="content container">
+            <header class="page-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h1>My Account</h1>
+                    </div>
+                </div>
+            </header>
+            <section class="page-content">
+                {% for m in message %}
+                    {{ m }}
+                {% endfor %}
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-12">
+                                    <h4 class="card-heading">Profile</h4>
+                                    <form method="post" enctype = "multipart/form-data">
+                                        <div class="form-group d-flex align-items-center">
+                                            <img src="{{ picture }}" class="rounded-circle" alt="Profile Image">
+                                            <div class="file-upload">
+                                                <label for="upload" class="btn btn-primary">Upload a new picture</label>
+                                                <input id="upload" class="file-upload__input" type="file" name="image">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputFirstName">Your First Name</label>
+                                            <input type="text" class="form-control" id="inputFirstName" name="firstname" autocomplete="name" placeholder="Enter your first name" value="{{fn}}">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputLastName">Your Last Name</label>
+                                            <input type="text" class="form-control" id="inputLastName" name="lastname" autocomplete="name" placeholder="Enter your last name" value="{{ln}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputEmail">Email address</label>
+                                            <input type="email" class="form-control" autocomplete="email" id="InputEmail" name="email" placeholder="Enter email" value="{{em}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputPassword">Password</label>
+                                            <input type="password" class="form-control" id="InputPassword" name="password" autocomplete="password" aria-describedby="passwordHelp" placeholder="Password">
+                                            <small id="passwordHelp" class="form-text text-muted">We recommend at least 8 characters long, avoiding patterns and common words/phrases.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

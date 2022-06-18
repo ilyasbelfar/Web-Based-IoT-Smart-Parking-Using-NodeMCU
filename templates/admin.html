@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel{% endblock %}
+{%block content %}
+    <div id="admin_default_page" class="content-wrapper">
+        <div class="content container">
+            <div class="page-content">
+                <div class="row flex-column text-center">
+                    <section id="contact" class="content-section text-center">
+                        <div class="container">
+                          <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-10 col-xs-12 col-lg-offset-2" style="
+    padding: 5.7rem 0;
+">
+                                <a class="text-decoration-none" style="
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            " href="{{ url_for('admin') }}">
+                                    <img id="admin_logo_main" src="/static/Parking_Logo.png" alt="logo" class="logo">
+                                </a>
+                              <h3 style="
+    font-size: 50px;
+    color: white;
+    word-spacing: 2px;
+    margin: 20px 0;
+    letter-spacing: 2px;
+    font-weight: bold;
+">Welcome To Your Admin Panel.</h3>
+                              
+                              <ul class="list-inline" style="
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                          ">
+                                <li class="list-inline-items">
+                                    <a href="{{ url_for('admin') }}" class="btn btn-default btn-lg">
+                                        <i class="fa-duotone fa-house-user"></i>
+                                      <span class="name">Home</span>
+                                    </a>
+                                  </li>
+                                <li class="list-inline-items">
+                                  <a href="/admin/logs" class="btn btn-default btn-lg">
+                                    <i class="fa-duotone fa-calendar-pen"></i>
+                                    <span class="name">Logs</span>
+                                  </a>
+                                </li>
+                                <li class="list-inline-items">
+                                  <a href="/admin/signup" class="btn btn-default btn-lg">
+                                    <i class="fa-duotone fa-person-circle-plus"></i>
+                                    <span class="name">Create New User</span>
+                                  </a>
+                                </li>
+                                <li class="list-inline-items">
+                                  <a href="/admin/reportage" class="btn btn-default btn-lg">
+                                    <i class="fa-duotone fa-chart-mixed"></i>
+                                    <span class="name">Reports</span>
+                                  </a>
+                                </li>
+                                <li class="list-inline-items">
+                                  <a href="/logout" class="btn btn-default btn-lg">
+                                    <i class="fa-duotone fa-right-from-bracket"></i>
+                                    <span class="name">Logout</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

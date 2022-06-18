@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+{% block navbar %}{% include 'navbar.html' %}{% endblock %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="content container">
+        <header class="page-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </header>
+        <section class="page-content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card tabs">
+                        <div class="row m-0 col-border-xl">
+                            <div class="col-md-12 col-lg-6 col-xl-3">
+                                <div class="card-body">
+                                    <div class="icon-rounded icon-rounded-1 float-left m-r-20">
+                                        <i class="fa-solid fa-car-garage"></i>
+                                    </div>
+                                    <h5 class="card-title m-b-5 counter" data-count={{ parking_times }}></h5>
+                                    <h6 class="text-muted m-t-10">Parking Times</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3">
+                                <div class="card-body" style="position: relative;">
+                                    <div class="icon-rounded icon-rounded-2 float-left m-r-20">
+                                        <i class="fa-solid fa-sack"></i>
+                                    </div>
+                                    <h5 class="card-title m-b-5">DA<span class="counter" data-count={{balance}}>0</span></h5>
+                                    <h6 class="text-muted m-t-10">Current Balance</h6>
+                                    <div class="top-up" data-toggle="modal" data-target="#form">
+                                        <i class="fa-regular fa-square-plus"></i>
+                                    </div>
+                                    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header border-bottom-0">
+                                              <h5 class="modal-title" id="exampleModalLabel" style="color: #000; font-size: 20px;">Top-Up Balance</h5>
+                                            </div>
+                                            <form method="post">
+                                              <div class="modal-body">
+                                                <div class="form-group">
+                                                  <label for="amount">Amount</label>
+                                                  <input min="0" step="1" type="number" onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value" oninput="validity.valid || (value = this.previousValue)" name="amount" type="number" class="form-control" id="amount" aria-describedby="amountHelp" placeholder="Enter amount" required>
+                                                    {% if c.money_debt > 0 %}
+                                                        <small id="amountHelp" class="form-text text-muted">You have {{c.money_debt}} DA In Debt, We'll take it from this amount to pay off your debt.</small>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cc-number">Credit Card Number</label>
+                                                    <input name="cc-number" data-masked="" data-inputmask="'mask': '9999 9999 9999 9999'" type="text" class="form-control" id="cc-number" placeholder="16-digit card number">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="cc-expiry">Card Expiry Date</label>
+                                                            <input name="cc-expiry" data-inputmask="'mask': '99/9999'" type="text" class="form-control" id="cc-expiry" placeholder="MM/YYYY">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="cc-cvv">CVV</label>
+                                                            <input name="cc-cvv" data-inputmask="'mask': '999'"  type="text" class="form-control" id="cc-cvv" placeholder="105">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                              <div class="modal-footer border-top-0 d-flex justify-content-center">
+                                                  <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button id="add-amount" type="submit" class="btn btn-success">Click To Top-Up</button>
+                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3">
+                                <div class="card-body">
+                                    <div class="icon-rounded icon-rounded-3 float-left m-r-20">
+                                        <i class="fa-solid fa-file-invoice"></i>
+                                    </div>
+                                    <h5 class="card-title m-b-5">DA<span class="counter" data-count={{c.money_debt}}>0</span></h5>
+                                    <h6 class="text-muted m-t-10">Money In Debt</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3">
+                                <div class="card-body">
+                                    <div class="icon-rounded icon-rounded-4 float-left m-r-20">
+                                        <i class="fa-solid fa-coins"></i>
+                                    </div>
+                                    <h5 class="card-title m-b-5">DA<span class="counter" data-count="{{c.total_money}}">0</span></h5>
+                                    <h6 class="text-muted m-t-10">Money Paid</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3">
+                                <div class="card-body">
+                                    <div class="icon-rounded icon-rounded-5 float-left m-r-20">
+                                        <i class="fa-duotone fa-car-tunnel"></i>
+                                    </div>
+                                    <h5 class="card-title m-b-5 counter" data-count={{ av_lots }}></h5>
+                                    <h6 class="text-muted m-t-10">Remaining Lots</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <h5 class="card-header">
+                            My Log Events
+                        </h5>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="logs_list table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>LOG ID</th>
+                                            <th>ENTRY DATETIME</th>
+                                            <th>EXIT DATETIME</th>
+                                            <th>TAG USED</th>
+                                            <th>COST(DA)</th>
+                                            <th class="no-sort">PAYMENT STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for log,pay in client_info %}
+                                            <tr>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ log.entry_date }}</td>
+                                                {% if log.exit_date==log.entry_date %}
+                                                <td></td>
+                                                {% else %}
+                                                <td>{{ log.exit_date }}</td>
+                                                {% endif %}
+                                                <td>{{ log.used_tag.tag_identifier }}</td>
+                                                    <td>{{ pay.payment_amount }}</td>
+                                                <td>
+                                                    {% if pay.is_payment_successful==True %}
+                                                    <span class="badge badge-pill badge-success">Fully Paid</span>
+                                                    {% else %}
+                                                    <span class="badge badge-pill badge-warning">Not Fully Paid</span>
+                                                    {%endif%}
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card bg-primary" id="totalParkingTimesChart">
+                        <div class="card-body p-0">
+                            <div class="card-toolbar top-right">
+                                <ul class="nav nav-pills nav-pills-light justify-content-end" id="total-parking-times-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="total-parking-times-link-1" data-toggle="pill" href="#total-parking-times-tab-1" role="tab" aria-controls="total-parking-times-tab-1" aria-selected="true">Week</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="total-parking-times-link-2" data-toggle="pill" href="#total-parking-times-tab-2" role="tab" aria-controls="total-parking-times-tab-2" aria-selected="false">Month</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="total-parking-times-link-3" data-toggle="pill" href="#total-parking-times-tab-3" role="tab" aria-controls="total-parking-times-tab-3" aria-selected="false">Year</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h5 class="card-title border-none text-white">Total Parking Times</h5>
+                            <div class="tab-content" id="total-parking-times-tab-content">
+                                <div class="tab-pane fade show active" id="total-parking-times-tab-1" role="tabpanel" aria-labelledby="total-parking-times-tab-1">
+                                    <span class="card-title text-white counter" data-count={{ parking_times_week }}>0</span>
+                                </div>
+                                <div class="tab-pane fade" id="total-parking-times-tab-2" role="tabpanel" aria-labelledby="total-parking-times-tab-2">
+                                    <span class="card-title text-white counter" data-count={{ parking_times_month }}>0</span>
+                                </div>
+                                <div class="tab-pane fade" id="total-parking-times-tab-3" role="tabpanel" aria-labelledby="total-parking-times-tab-3">
+                                    <span class="card-title text-white counter" data-count={{ parking_times_year }}>0</span>
+                                </div>
+                            </div>
+                            <div class="ct-chart"></div>
+                        </div>
+                    </div>
+                      <div class="card bg-primary" id="totalMoneySpentChart">
+                        <div class="card-body p-0">
+                            <div class="card-toolbar top-right">
+                                <ul class="nav nav-pills nav-pills-light justify-content-end" id="total-money-spent-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="total-money-spent-link-1" data-toggle="pill" href="#total-money-spent-tab-1" role="tab" aria-controls="total-money-spent-tab-1" aria-selected="true">Week</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="total-money-spent-link-2" data-toggle="pill" href="#total-money-spent-tab-2" role="tab" aria-controls="total-money-spent-tab-2" aria-selected="false">Month</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="total-money-spent-link-3" data-toggle="pill" href="#total-money-spent-tab-3" role="tab" aria-controls="total-money-spent-tab-3" aria-selected="false">Year</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h5 class="card-title border-none text-white">Total Money Spent</h5>
+                            <div class="tab-content" id="total-money-spent-tab-content">
+                                <div class="tab-pane fade show active" id="total-money-spent-tab-1" role="tabpanel" aria-labelledby="total-money-spent-tab-1">
+                                    <span class="card-title text-white">DA<span class="counter" data-count={{ total_amount_week }}>0</span></span>
+                                </div>
+                                <div class="tab-pane fade" id="total-money-spent-tab-2" role="tabpanel" aria-labelledby="total-money-spent-tab-2">
+                                    <span class="card-title text-white">DA<span class="counter" data-count={{ total_amount_month }}>0</span></span>
+                                </div>
+                                <div class="tab-pane fade" id="total-money-spent-tab-3" role="tabpanel" aria-labelledby="total-money-spent-tab-3">
+                                    <span class="card-title text-white">DA<span class="counter" data-count={{ total_amount_year }}>0</span></span>
+                                </div>
+                            </div>
+                            <div class="ct-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

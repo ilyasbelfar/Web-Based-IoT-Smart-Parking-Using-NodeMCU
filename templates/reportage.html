@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}Stats & Reports{% endblock %}
+{% block navbar %}{% include 'navbar_admin.html' %}{% endblock %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="content container">
+        <header class="page-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </header>
+        <section class="page-content">
+        <form class="form-signin" action="/admin/reportage" method="post">
+        <div class="row justify-content-center">
+            <div class="col-lg-5" style="margin-bottom: 1rem;">
+                <div class="input-group date flex-column " id="datepicker">
+                    <label for="FDATE">Start Date:</label>
+                    <input type="date" class="form-control" name="FDATE" id="FDATE"/>
+                </div>
+            </div>
+            <div class="col-lg-5" style="margin-bottom: 1rem;">
+                <div class="input-group date flex-column" id="datepicker">
+                    <label for="LDATE">End Date:</label>
+                    <input type="date" class="form-control" name="LDATE" id="LDATE"/>
+                </div>
+            </div>
+        </div>
+        <button id="Filter" class="btn btn-lg btn-primary btn-block" style="
+    width: 8rem;
+    margin: auto;
+" onclick = 'this.form.submit();' type="button">Filter</button>
+    </form>
+            <div class="rows_reportage row">
+
+            <div class="col-lg">
+                        <div class="card">
+                            <h5 class="card-header">
+                               Occupancy Rate
+                            </h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+    <table class="logs_list table table-striped table-bordered">
+        <thead>
+            
+            <tr>
+                <th>Occupancy rate(Hours)</th>
+                <th>Hours</th>
+            </tr>
+          
+        </thead>
+        <tbody>
+
+            {% for l in statocc %}
+                <tr> 
+                    <td>{{ l["hours"] }}</td>
+                    <td>{{ l["repetition"] }}</td>
+                </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            </div>
+            <div class="rows_reportage row">
+             <div class="col-lg">
+                        <div class="card">
+                            <h5 class="card-header">
+                               Best Hours
+                            </h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+    <table class="logs_list table table-striped table-bordered">
+        <thead>
+            
+            <tr>
+                <th>Best hours(From)</th>
+                <th>Entries Times</th>
+            </tr>
+          
+        </thead>
+        <tbody>
+
+            {% for l in stathours %}
+                <tr> 
+                    <td>{{ l["hour"] }}</td>
+                    <td>{{ l["repetition"] }}</td>
+                </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+                                </div>
+                            </div>
+                        </div>
+             </div>
+            </div>
+    <h1 style="text-transform: uppercase;">Total paid: <span style="color: #ff5c75">{{ totalpaid }} DA</span></h1>
+
+        <div class="rows_reportage row">
+             <div class="col-lg">
+                        <div class="card">
+                            <h5 class="card-header">
+                               Best Users
+                            </h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+    <table class="logs_list table table-striped table-bordered">
+        <thead>
+            
+            <tr>
+                <th>Best users</th>
+                <th>Paid(DA)</th>
+            </tr>
+          
+        </thead>
+        <tbody>
+
+            {% for l in bestusers %}
+                <tr> 
+                    <td>{{ l["username"] }}</td>
+                    <td>{{ l["paid_amount"] }}</td>
+
+                </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+                                </div>
+                            </div>
+                        </div>
+             </div>
+    </div>
+    </section>
+    </div>
+    </div>
+    {% endblock %}

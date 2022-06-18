@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Users Logs{% endblock %}
+{% block navbar %}{% include 'navbar_admin.html' %}{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="content container">
+            <header class="page-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </header>
+            <section class="page-content">
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="card">
+                            <h5 class="card-header">
+                               Users Logs Events
+                            </h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div class="col-lg-5" style="margin-bottom: 1rem;">
+                                        <div class="input-group date" id="datepicker">
+                                            <input type="text" class="form-control daterange" id="date"/>
+                                            <span class="input-group-append">
+                                              <span class="input-group-text bg-light d-block">
+                                                <i class="fa-duotone fa-calendar-range"></i>
+                                              </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <table class="logs_list table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>LOG ID</th>
+                                                <th>ENTRY DATETIME</th>
+                                                <th>EXIT DATETIME</th>
+                                                <th>USER NAME </th>
+                                                <th>USER EMAIL</th>
+                                                <th>TAG USED</th>
+                                                <th>PAID AMOUNT(DA)</th>
+                                            </tr>
+                                          
+                                        </thead>
+                                        <tbody>
+
+                                            {% for l in alllogs %}
+                                                <tr> 
+                                                    <th>{{ loop.index }}</th>
+                                                    <th>{{l["entry_date"]}}</th>
+                                                    {% if l["entry_date"]==l["exit_date"] %}
+                                                        <th></th>
+                                                    {% else %}
+                                                        <th>{{l["exit_date"]}}</th>
+                                                    {% endif %}
+                                                    <th>{{l["username"]}}</th>
+                                                    <th>{{l["email"]}}</th>
+                                                    <th>{{l["used_tag"]}}</th>
+                                                    <th>{{l["paid_amount"]}}</th>
+                                                </tr>
+                                            {%endfor%}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+        {% endblock %}

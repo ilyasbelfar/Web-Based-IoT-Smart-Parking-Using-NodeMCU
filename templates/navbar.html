@@ -1,0 +1,51 @@
+{% block content %}
+<div class="header-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <ul class="site-logo">
+                    <li>
+                        <a class="text-decoration-none" href="/">
+                            <img src="/static/Parking_Logo.png" alt="logo" class="logo">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="top-toolbar-wrapper">
+                    <nav class="top-toolbar navbar flex-nowrap">
+                        <ul class="navbar-nav nav-right">
+                            <li class="nav-item dropdown dropdown-menu-lg show">
+                                <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                                    <img src="{{picture}}" class="rounded-circle" alt="{{fn}} {{ln}}">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-account">
+                                    <div class="dropdown-header pb-3">
+                                        <div class="media d-user">
+                                            <img class="align-self-center mr-3 rounded-circle" src="{{picture}}" alt="{{fn}} {{ln}}">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-0">{{fn}} {{ln}}</h5>
+                                                <span>{{em}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a class="dropdown-item" href={{ url_for ('profile',id=session["id"]) }}>
+                                        <i class="fa-duotone fa-user"></i>Profile
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="{{ url_for ('logout') }}">
+                                        <i class="fa-duotone fa-right-from-bracket"></i>Sign Out
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
