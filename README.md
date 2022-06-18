@@ -6,3 +6,7 @@
  <img src="Design%20Model/IMG_20220614_004643.jpg">
  <br/>
 </p>
+
+## User Dasbhoard
+> To Top-Up User Balance, He Can Do It Here.
+![Imgur](User%20Dashboard%20ScreenShots/balance.PNG)
