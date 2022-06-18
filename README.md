@@ -24,6 +24,6 @@
 > Admin Dashboard Main Page.
 ![Imgur](Admin%20Dashboard%20ScreenShots/Capture_1.PNG)
 > Table Of All The Logs Of All Users.
-![Imgur](Admin%20Dashboard%20ScreenShots/Capture_2.PNG)
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_2.png)
 > Table Of All The Logs Of All Users With Date Filter.
-![Imgur](Admin%20Dashboard%20ScreenShots/Capture_3.PNG)
+![Imgur](Admin%20Dashboard%20ScreenShots/Capture_3.png)
